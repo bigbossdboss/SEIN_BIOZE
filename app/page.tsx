@@ -4,6 +4,7 @@ import {
   ContactBlockSection,
   FaqPreviewSection,
   ProcessSection,
+  RealisationsPreviewSection,
   ServicesOverviewSection,
   TestimonialsSection,
   TrustSection
@@ -25,6 +26,7 @@ export default function HomePage() {
       <TrustSection />
       <ServicesOverviewSection />
       <ProcessSection />
+      <RealisationsPreviewSection />
       <ConfidentialitySection />
       <TestimonialsSection />
       <FaqPreviewSection />

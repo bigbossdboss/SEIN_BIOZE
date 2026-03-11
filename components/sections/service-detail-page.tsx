@@ -1,7 +1,7 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { ServiceItem } from "@/data/services";
-import { toCurrency } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/lib/site";
 
 export function ServiceDetailPage({ service }: { service: ServiceItem }) {
   return (
@@ -15,13 +15,13 @@ export function ServiceDetailPage({ service }: { service: ServiceItem }) {
           <p className="mt-5 text-base leading-relaxed text-[#6e5138]">{service.longDescription}</p>
           <ul className="mt-6 space-y-2 text-sm text-[#6e5138]">
             <li>Duree indicative : {service.duration}</li>
-            <li>Tarif a partir de : {toCurrency(service.fromPrice)}</li>
-            <li>Acompte de reservation : {toCurrency(service.depositAmount)}</li>
+            <li>Protocole defini selon votre situation personnelle.</li>
+            <li>Tarif transmis de facon transparente apres echange.</li>
           </ul>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/reservation">
-              <Button>Reserver cette prestation</Button>
-            </Link>
+            <a href={`https://wa.me/${siteConfig.whatsapp}`} target="_blank" rel="noreferrer">
+              <Button>Ecrire sur WhatsApp</Button>
+            </a>
             <Link href="/contact">
               <Button variant="ghost">Poser une question</Button>
             </Link>
@@ -39,4 +39,3 @@ export function ServiceDetailPage({ service }: { service: ServiceItem }) {
     </div>
   );
 }
-

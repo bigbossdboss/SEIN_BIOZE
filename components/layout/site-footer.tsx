@@ -1,3 +1,4 @@
+﻿import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site";
 
@@ -6,19 +7,22 @@ export function SiteFooter() {
     <footer className="mt-20 border-t border-brand-100 bg-brand-50/50">
       <div className="container grid gap-10 py-14 md:grid-cols-3">
         <div>
-          <h3 className="font-serif text-xl text-brand-700">SEIN'BIOZE By Kris Design</h3>
+          <div className="flex items-center gap-3">
+            <Image src={siteConfig.logoPath} alt="Logo SEIN'BIOZE" width={52} height={52} className="h-12 w-12 rounded-full object-cover" />
+            <h3 className="font-serif text-xl text-brand-700">SEIN'BIOZE By Kris Design</h3>
+          </div>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-[#6e5138]">
-            Accompagnement discret et hautement personnalisé en Guadeloupe pour reconstruction esthétique mammaire.
+            Accompagnement discret et hautement personnalise en Guadeloupe pour reconstruction esthetique mammaire.
           </p>
         </div>
         <div>
           <h4 className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-500">Navigation</h4>
           <ul className="mt-4 space-y-2 text-sm text-[#6e5138]">
             <li><Link href="/services">Services</Link></li>
+            <li><Link href="/realisations">Realisations</Link></li>
             <li><Link href="/accompagnement">Accompagnement</Link></li>
             <li><Link href="/faq">FAQ</Link></li>
             <li><Link href="/contact">Contact</Link></li>
-            <li><Link href="/blog">Blog (a venir)</Link></li>
           </ul>
         </div>
         <div>
@@ -41,4 +45,3 @@ export function SiteFooter() {
     </footer>
   );
 }
-

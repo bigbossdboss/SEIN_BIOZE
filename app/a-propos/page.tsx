@@ -26,7 +26,7 @@ export default function AboutPage() {
         <article className="rounded-xl border border-brand-100 p-6 shadow-card">
           <h2 className="font-serif text-2xl text-brand-700">Une exigence premium</h2>
           <p className="mt-3 text-sm leading-relaxed text-[#6e5138]">
-            Materiaux de qualite, finitions soignées et protocoles rigoureux : nous combinons savoir-faire artisanal et standards professionnels pour un resultat fiable et elegant.
+            Materiaux de qualite, finitions soignees et protocoles rigoureux : nous combinons savoir-faire artisanal et standards professionnels pour un resultat fiable et elegant.
           </p>
         </article>
       </div>
@@ -38,8 +38,8 @@ export default function AboutPage() {
           <li>Respect de l'intimite et confidentialite renforcee.</li>
           <li>Suivi personnalise dans la duree.</li>
         </ul>
-        <Link href="/reservation" className="mt-5 inline-block text-sm font-semibold text-brand-500 underline underline-offset-4">
-          Prendre rendez-vous
+        <Link href="/contact" className="mt-5 inline-block text-sm font-semibold text-brand-500 underline underline-offset-4">
+          Demander un premier echange
         </Link>
       </div>
     </div>

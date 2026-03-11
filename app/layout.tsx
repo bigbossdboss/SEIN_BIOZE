@@ -29,6 +29,18 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true
+  },
+  icons: {
+    icon: siteConfig.logoPath,
+    shortcut: siteConfig.logoPath,
+    apple: siteConfig.logoPath
+  },
+  openGraph: {
+    images: [siteConfig.socialImagePath]
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [siteConfig.socialImagePath]
   }
 };
 

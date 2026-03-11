@@ -1,7 +1,6 @@
 ﻿import Link from "next/link";
 import { services } from "@/data/services";
 import { createMetadata, defaultSeoKeywords } from "@/lib/site";
-import { toCurrency } from "@/lib/utils";
 
 export const metadata = createMetadata({
   title: "Services",
@@ -22,7 +21,7 @@ export default function ServicesPage() {
           <article key={service.slug} className="rounded-xl border border-brand-100 bg-white p-6 shadow-card">
             <h2 className="font-serif text-2xl text-brand-700">{service.name}</h2>
             <p className="mt-3 text-sm text-[#6e5138]">{service.shortDescription}</p>
-            <p className="mt-4 text-sm font-medium text-brand-700">A partir de {toCurrency(service.fromPrice)}</p>
+            <p className="mt-4 text-sm font-medium text-brand-700">Tarification communiquee apres echange personnalise.</p>
             <Link href={`/services/${service.slug}`} className="mt-4 inline-block text-sm font-semibold text-brand-500 underline underline-offset-4">
               En savoir plus
             </Link>

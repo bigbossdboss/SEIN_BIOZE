@@ -11,10 +11,10 @@ export default function ConfidentialitePage() {
     <div className="container py-12 md:py-16">
       <h1 className="font-serif text-4xl text-brand-700">Politique de confidentialite</h1>
       <div className="mt-6 space-y-5 text-sm leading-relaxed text-[#6e5138]">
-        <p>Nous collectons uniquement les donnees necessaires au traitement de vos demandes (reservation, contact, qualification).</p>
+        <p>Nous collectons uniquement les donnees necessaires au traitement de vos demandes (contact, qualification).</p>
         <p>Ces donnees sont conservees de facon securisee et ne sont jamais vendues a des tiers.</p>
         <p>Conformement au RGPD, vous pouvez exercer vos droits d'acces, rectification et suppression a l'adresse contact@seinbioze-krisdesign.fr.</p>
-        <p>Les paiements sont traites via Stripe. Nous ne stockons pas vos donnees bancaires.</p>
+        <p>Les informations partagees servent uniquement a vous accompagner avec discretion et pertinence.</p>
       </div>
     </div>
   );

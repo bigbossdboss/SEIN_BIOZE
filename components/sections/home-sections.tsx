@@ -1,11 +1,11 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { services } from "@/data/services";
 import { testimonials } from "@/data/testimonials";
 import { faqItems } from "@/data/faq";
 import { siteConfig } from "@/lib/site";
-import { toCurrency } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { RealisationsGallery } from "@/components/sections/realisations-gallery";
 
 export function TrustSection() {
   return (
@@ -37,7 +37,7 @@ export function ServicesOverviewSection() {
             <article key={service.slug} className="rounded-xl border border-brand-100 bg-white p-6 shadow-card">
               <h3 className="font-serif text-2xl text-brand-700">{service.name}</h3>
               <p className="mt-3 text-sm leading-relaxed text-[#6e5138]">{service.shortDescription}</p>
-              <p className="mt-4 text-sm font-medium text-brand-700">A partir de {toCurrency(service.fromPrice)}</p>
+              <p className="mt-4 text-sm font-medium text-brand-700">Evaluation personnalisee apres premier echange.</p>
               <Link className="mt-5 inline-block text-sm font-semibold text-brand-500 underline underline-offset-4" href={`/services/${service.slug}`}>
                 Voir le detail
               </Link>
@@ -85,6 +85,26 @@ export function ProcessSection() {
             <p className="mt-3 text-sm leading-relaxed text-[#6e5138]">{step.description}</p>
           </article>
         ))}
+      </div>
+    </section>
+  );
+}
+
+export function RealisationsPreviewSection() {
+  return (
+    <section className="bg-brand-50/60 py-16">
+      <div className="container">
+        <SectionHeading
+          eyebrow="Realisations"
+          title="Un apercu concret du niveau de finition"
+          description="Des exemples de textures, de nuances et de reliefs adaptes a chaque personne."
+        />
+        <div className="mt-8">
+          <RealisationsGallery limit={6} />
+        </div>
+        <Link href="/realisations" className="mt-6 inline-block text-sm font-semibold text-brand-500 underline underline-offset-4">
+          Voir toute la galerie
+        </Link>
       </div>
     </section>
   );
@@ -157,18 +177,17 @@ export function ContactBlockSection() {
           description="Un premier echange suffit pour vous orienter vers la solution la plus juste."
         />
         <div className="mt-6 flex flex-wrap gap-3">
-          <Link href="/reservation">
-            <Button>Prendre rendez-vous</Button>
-          </Link>
           <a href={`https://wa.me/${siteConfig.whatsapp}`} target="_blank" rel="noreferrer">
-            <Button variant="secondary">Ecrire sur WhatsApp</Button>
+            <Button>Ecrire sur WhatsApp</Button>
           </a>
           <Link href="/contact">
-            <Button variant="ghost">Formulaire de contact</Button>
+            <Button variant="secondary">Formulaire de contact</Button>
+          </Link>
+          <Link href="/services">
+            <Button variant="ghost">Voir les services</Button>
           </Link>
         </div>
       </div>
     </section>
   );
 }
-

@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export function HeroSection() {
@@ -16,11 +16,11 @@ export function HeroSection() {
             Chaque accompagnement est pense avec ecoute, pudeur et excellence artisanale.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/reservation">
-              <Button>Prendre rendez-vous</Button>
+            <Link href="/contact">
+              <Button>Demander un premier echange</Button>
             </Link>
-            <Link href="/services">
-              <Button variant="secondary">Decouvrir les services</Button>
+            <Link href="/realisations">
+              <Button variant="secondary">Voir les realisations</Button>
             </Link>
           </div>
         </div>
@@ -49,4 +49,3 @@ export function HeroSection() {
     </section>
   );
 }
-
