@@ -1,7 +1,20 @@
-﻿import { CheckCircle2, Heart, ShieldCheck, Sparkles, UserRound, Wrench } from "lucide-react";
+﻿import Image from "next/image";
 import Link from "next/link";
+import {
+  CheckCircle2,
+  Heart,
+  ShieldCheck,
+  Sparkles,
+  UserRound,
+  Hand,
+  Search,
+  Paintbrush,
+  BadgeCheck
+} from "lucide-react";
 import { testimonials } from "@/data/testimonials";
+import { galleryItems } from "@/data/gallery";
 import { siteConfig } from "@/lib/site";
+import { RealisationsGallery } from "@/components/sections/realisations-gallery";
 import { Button } from "@/components/ui/button";
 
 function SectionIntro({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
@@ -16,35 +29,110 @@ function SectionIntro({ eyebrow, title, description }: { eyebrow: string; title:
 
 export function AboutStorySection() {
   return (
-    <section id="qui-sommes-nous" className="container py-16 md:py-20">
-      <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-        <div className="rounded-3xl border border-[#e2d3cb] bg-[#f3e9df] p-8">
-          <div className="flex h-full min-h-[230px] items-center justify-center rounded-2xl border border-[#eadcd3] bg-[#f6efe8] text-[#8a5a62]">
-            <UserRound size={74} strokeWidth={1.4} />
-          </div>
-          <div className="mt-6 grid grid-cols-3 gap-3 text-center text-sm">
-            <div className="rounded-2xl bg-white p-3 text-[#6d4d52]"><p className="font-semibold">2025</p><p>Création</p></div>
-            <div className="rounded-2xl bg-white p-3 text-[#6d4d52]"><p className="font-semibold">Guadeloupe</p><p>Ancrage local</p></div>
-            <div className="rounded-2xl bg-white p-3 text-[#6d4d52]"><p className="font-semibold">100%</p><p>Artisanal</p></div>
-          </div>
-        </div>
-
-        <article id="a-propos">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#8c5f67]">Notre histoire</p>
-          <h2 className="mt-3 font-serif text-5xl leading-tight text-[#4f2b2f]">Qui sommes nous</h2>
-          <div className="mt-6 space-y-4 text-base leading-relaxed text-[#6b4b4f]">
-            <p>
-              Je suis une professionnelle guadeloupéenne issue du soin, reconvertie dans la dermopigmentation réparatrice et la création de prothèses mammaires externes.
-            </p>
-            <p>
-              Cette reconversion unit mes deux piliers: l'aide à la personne et l'esthétique réparatrice. Chaque accompagnement est conçu avec écoute, pudeur et exigence.
-            </p>
-            <p>
-              Chez SEIN'BIOZE, chaque création est personnalisée pour que vous retrouviez confiance, confort et harmonie dans votre corps.
-            </p>
+    <section id="qui-sommes-nous" className="container py-14 md:py-18">
+      <div className="grid gap-8 rounded-[30px] border border-[#e3d8cf] bg-white p-6 shadow-card md:p-8 lg:grid-cols-[1.05fr_0.95fr]">
+        <article id="a-propos" className="max-w-2xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#8c5f67]">Notre mission</p>
+          <h2 className="mt-3 font-serif text-4xl leading-tight text-[#4f2b2f] md:text-5xl">Au coeur de votre bien-etre</h2>
+          <p className="mt-5 text-base leading-relaxed text-[#6a4c50]">
+            SEIN'BIOZE est nee d'une volonte simple: accompagner chaque personne avec dignite, douceur et exigence apres un parcours de reconstruction.
+          </p>
+          <p className="mt-3 text-base leading-relaxed text-[#6a4c50]">
+            Nos protheses externes en silicone medical sont le fruit d'un travail artisanal precis, associe a une ecoute attentive et une approche humaine.
+          </p>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            <div className="rounded-2xl border border-[#e5d8cf] bg-[#f8f1e9] p-4 text-center">
+              <p className="text-3xl font-semibold text-[#8b3347]">100%</p>
+              <p className="mt-1 text-sm text-[#6d4f53]">Silicone medical</p>
+            </div>
+            <div className="rounded-2xl border border-[#e5d8cf] bg-[#f8f1e9] p-4 text-center">
+              <p className="text-3xl font-semibold text-[#8b3347]">10+</p>
+              <p className="mt-1 text-sm text-[#6d4f53]">Tailles disponibles</p>
+            </div>
           </div>
         </article>
+
+        <div className="rounded-[24px] border border-[#e8ddd4] bg-[#f4ebe2] p-6">
+          <div className="flex h-full min-h-[250px] items-center justify-center rounded-[20px] border border-[#e6d8cc] bg-[#f8f1ea]">
+            <div className="rounded-full border border-[#cfb7a8] bg-[#ead8ca] p-8">
+              <div className="rounded-full border border-[#b88f80] bg-[#d8b5a4] p-6">
+                <div className="h-5 w-5 rounded-full bg-[#7f3e46]" />
+              </div>
+            </div>
+          </div>
+          <p className="mt-4 text-center text-sm text-[#6b4b51]">Aspect naturel et toucher realiste</p>
+        </div>
       </div>
+    </section>
+  );
+}
+
+export function CraftSection() {
+  const steps = [
+    {
+      number: "1",
+      title: "Empreinte",
+      desc: "Prise minutieuse de l'empreinte de votre mamelon",
+      icon: Hand
+    },
+    {
+      number: "2",
+      title: "Analyse",
+      desc: "Etude detaillee pour une adaptation parfaite",
+      icon: Search
+    },
+    {
+      number: "3",
+      title: "Creation",
+      desc: "Modelage artisanal en silicone medical",
+      icon: Paintbrush
+    },
+    {
+      number: "4",
+      title: "Finition",
+      desc: "Finitions precises et controle qualite",
+      icon: BadgeCheck
+    }
+  ];
+
+  return (
+    <section id="savoir-faire" className="container py-14 md:py-18">
+      <SectionIntro
+        eyebrow="Savoir-faire"
+        title="Sur mesure, entierement realisee a la main"
+        description="Chaque prothese est unique, creee specialement pour vous a partir de l'empreinte precise de votre anatomie."
+      />
+
+      <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {steps.map((step, index) => (
+          <article key={step.number} className="relative rounded-3xl border border-[#e3d6cd] bg-white p-5 shadow-card">
+            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#f3e7dc] text-[#8a2e42]">
+              <step.icon size={20} />
+            </div>
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#8a2d3f] text-sm font-semibold text-white">
+              {step.number}
+            </span>
+            <h3 className="mt-3 font-serif text-3xl text-[#4f2b2f]">{step.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-[#6a4c50]">{step.desc}</p>
+            {index < steps.length - 1 ? (
+              <span className="absolute -right-2 top-1/2 hidden -translate-y-1/2 text-[#c09a8c] xl:block">→</span>
+            ) : null}
+          </article>
+        ))}
+      </div>
+
+      <article className="mt-8 rounded-3xl border border-[#e1d5cc] bg-[#f8f2eb] p-6">
+        <h3 className="font-serif text-3xl text-[#4f2b2f]">Travail entierement a la main</h3>
+        <p className="mt-3 text-sm leading-relaxed text-[#6a4c50]">
+          De la prise d'empreinte a la finition, chaque etape est realisee par nos artisans avec patience et precision.
+        </p>
+        <ul className="mt-4 space-y-2 text-sm text-[#6a4c50]">
+          <li>✓ Empreinte precise et personnalisee</li>
+          <li>✓ Modelage artisanal minutieux</li>
+          <li>✓ Respect du detail et controle qualite</li>
+          <li>✓ Prothese unique et confortable</li>
+        </ul>
+      </article>
     </section>
   );
 }
@@ -54,44 +142,54 @@ export function ProductsSection() {
     {
       title: "Forme Naturelle",
       badge: "Populaire",
-      desc: "Prothèse symétrique offrant un galbe harmonieux et un décolleté naturel, pensée pour le quotidien.",
-      details: "Tailles A à F · Légère · Aspect réaliste"
+      desc: "Prothese symetrique offrant un galbe harmonieux et un decollete naturel pour le quotidien.",
+      details: "Tailles A a F - Legere"
     },
     {
       title: "Forme Anatomique",
-      badge: "Précision",
-      desc: "Design asymétrique reproduisant fidèlement la forme naturelle du sein pour une adaptation fine.",
-      details: "Tailles A à C · Ultra légère · Confort longue durée"
+      badge: "Confort",
+      desc: "Design asymetrique reproduisant fidelement la forme naturelle du sein.",
+      details: "Tailles A a C - Ultra legere"
     },
     {
       title: "Forme Ronde",
       badge: "Nouveau",
-      desc: "Prothèse ronde avec effet volume pour occasions spéciales et besoins de projection plus marqués.",
-      details: "Tailles B à E · Effet volume · Finition douce"
+      desc: "Prothese ronde pour un effet volume naturel et une adaptation personnalisee.",
+      details: "Tailles B a E - Effet volume"
     }
   ];
 
   return (
-    <section id="nos-produits" className="bg-[#f8f2ec] py-16 md:py-20">
-      <div className="container">
-        <SectionIntro
-          eyebrow="Nos solutions"
-          title="Prothèses mammaires en silicone"
-          description="Une gamme complète pour répondre à vos besoins avec différentes formes et tailles, pour une adaptation parfaite à votre morphologie."
-        />
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          {cards.map((card) => (
-            <article key={card.title} className="rounded-3xl border border-[#e1d1cb] bg-white p-6 shadow-card">
-              <div className="mb-5 flex h-44 items-center justify-center rounded-2xl border border-[#ece0d7] bg-[#f3e9df]">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#d4b8aa] bg-[#ead8ca]" />
+    <section id="nos-produits" className="container py-14 md:py-18">
+      <SectionIntro
+        eyebrow="Nos solutions"
+        title="Protheses mammaires en silicone"
+        description="Une gamme complete pour repondre a tous les besoins avec differentes formes et tailles, adaptee a chaque morphologie."
+      />
+
+      <div className="mt-10 grid gap-6 lg:grid-cols-3">
+        {cards.map((card, index) => {
+          const image = galleryItems[index];
+          return (
+            <article key={card.title} className="rounded-3xl border border-[#e1d3cb] bg-white p-6 shadow-card">
+              <div className="relative mb-5 overflow-hidden rounded-2xl border border-[#e8dbd1] bg-[#f3e9df]">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={900}
+                  height={1200}
+                  className="h-52 w-full object-cover"
+                />
+                <span className="absolute right-3 top-3 rounded-full bg-[#7d2438] px-3 py-1 text-xs font-semibold text-white">
+                  {card.badge}
+                </span>
               </div>
-              <span className="rounded-full bg-[#7d2438] px-3 py-1 text-xs font-semibold text-white">{card.badge}</span>
-              <h3 className="mt-4 font-serif text-3xl text-[#4f2b2f]">{card.title}</h3>
+              <h3 className="font-serif text-3xl text-[#4f2b2f]">{card.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-[#6a4c50]">{card.desc}</p>
-              <p className="mt-4 text-sm font-medium text-[#83545d]">{card.details}</p>
+              <p className="mt-4 text-sm font-medium text-[#80535c]">{card.details}</p>
             </article>
-          ))}
-        </div>
+          );
+        })}
       </div>
     </section>
   );
@@ -99,73 +197,43 @@ export function ProductsSection() {
 
 export function PigmentationServicesSection() {
   return (
-    <section className="container py-16 md:py-20">
-      <SectionIntro
-        eyebrow="Services de pigmentation"
-        title="Pigmentation réparatrice et tatouage 3D"
-        description="Complétez votre reconstruction avec des techniques de dermopigmentation précises, artistiques et harmonieuses."
-      />
-      <div className="mt-10 grid gap-6 lg:grid-cols-2">
-        <article className="rounded-3xl border border-[#e1d1cb] bg-white p-6 shadow-card">
-          <div className="mb-5 flex h-52 items-center justify-center rounded-2xl border border-[#ece0d7] bg-[#f3e9df]">
-            <Wrench size={72} strokeWidth={1.2} className="text-[#8c5f67]" />
-          </div>
-          <h3 className="font-serif text-3xl text-[#4f2b2f]">Pigmentation Réparatrice</h3>
-          <p className="mt-3 text-sm leading-relaxed text-[#6a4c50]">
-            Camouflage artistique de cicatrices et irrégularités cutanées. Technique fine et naturelle pour rétablir l'uniformité de la peau.
-          </p>
-          <ul className="mt-4 space-y-1 text-sm text-[#6a4c50]">
-            <li>✓ Camouflage de cicatrices</li>
-            <li>✓ Uniformité cutanée</li>
-            <li>✓ Pigments adaptés à votre teinte</li>
-          </ul>
-        </article>
-
-        <article className="rounded-3xl border border-[#e1d1cb] bg-white p-6 shadow-card">
-          <div className="mb-5 flex h-52 items-center justify-center rounded-2xl border border-[#ece0d7] bg-[#f3e9df]">
-            <Sparkles size={72} strokeWidth={1.2} className="text-[#8c5f67]" />
-          </div>
-          <h3 className="font-serif text-3xl text-[#4f2b2f]">Tatouage 3D Aréolo-Mammaire</h3>
-          <p className="mt-3 text-sm leading-relaxed text-[#6a4c50]">
-            Création de l'illusion 3D de la plaque aréolo-mammaire par tatouage artistique, entièrement personnalisée pour une reconstruction cohérente.
-          </p>
-          <ul className="mt-4 space-y-1 text-sm text-[#6a4c50]">
-            <li>✓ Effet 3D ultra réaliste</li>
-            <li>✓ Entièrement personnalisé</li>
-            <li>✓ Reconstruction complète</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-  );
-}
-
-export function CraftSection() {
-  const steps = [
-    { number: "1", title: "Empreinte", desc: "Prise minutieuse de l'empreinte de votre mamelon" },
-    { number: "2", title: "Analyse", desc: "Étude détaillée pour une adaptation parfaite" },
-    { number: "3", title: "Création", desc: "Modelage artisanal en silicone médical" },
-    { number: "4", title: "Finition", desc: "Finitions précises et test de qualité" }
-  ];
-
-  return (
-    <section id="savoir-faire" className="bg-[#f8f2ec] py-16 md:py-20">
+    <section className="bg-[#f8f2eb] py-14 md:py-18">
       <div className="container">
         <SectionIntro
-          eyebrow="Savoir-faire"
-          title="Sur mesure, entièrement réalisée à la main"
-          description="Chaque prothèse est unique, créée à partir de l'empreinte précise de votre mamelon, du premier geste à la finition."
+          eyebrow="Services de pigmentation et tatouage"
+          title="Reconstruction visuelle harmonieuse"
+          description="Completez votre reconstruction avec nos services de dermopigmentation reparatrice et tatouage 3D areolo-mammaire."
         />
-        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {steps.map((step) => (
-            <article key={step.number} className="rounded-3xl border border-[#e1d1cb] bg-white p-6 shadow-card">
-              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-[#8a2d3f] text-lg font-semibold text-white">
-                {step.number}
-              </div>
-              <h3 className="font-serif text-3xl text-[#4f2b2f]">{step.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#6a4c50]">{step.desc}</p>
-            </article>
-          ))}
+        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+          <article className="rounded-3xl border border-[#e1d3cb] bg-white p-6 shadow-card">
+            <div className="overflow-hidden rounded-2xl border border-[#e7dace]">
+              <Image src={galleryItems[8].src} alt={galleryItems[8].alt} width={1200} height={1200} className="h-56 w-full object-cover" />
+            </div>
+            <h3 className="mt-5 font-serif text-3xl text-[#4f2b2f]">Pigmentation reparatrice</h3>
+            <p className="mt-3 text-sm leading-relaxed text-[#6a4c50]">
+              Camouflage artistique de cicatrices et imperfections cutanees pour retrouver uniformite et serenite.
+            </p>
+            <ul className="mt-4 space-y-1 text-sm text-[#6a4c50]">
+              <li>✓ Camouflage de cicatrices</li>
+              <li>✓ Uniformite cutanee</li>
+              <li>✓ Pigments adaptes a votre teinte</li>
+            </ul>
+          </article>
+
+          <article className="rounded-3xl border border-[#e1d3cb] bg-white p-6 shadow-card">
+            <div className="overflow-hidden rounded-2xl border border-[#e7dace]">
+              <Image src={galleryItems[5].src} alt={galleryItems[5].alt} width={1200} height={1200} className="h-56 w-full object-cover" />
+            </div>
+            <h3 className="mt-5 font-serif text-3xl text-[#4f2b2f]">Tatouage 3D areolo-mammaire</h3>
+            <p className="mt-3 text-sm leading-relaxed text-[#6a4c50]">
+              Creation d'un effet 3D realiste de la plaque areolaire, avec un rendu naturel et personnalise.
+            </p>
+            <ul className="mt-4 space-y-1 text-sm text-[#6a4c50]">
+              <li>✓ Effet 3D ultra realiste</li>
+              <li>✓ Entierement personnalise</li>
+              <li>✓ Reconstruction complete</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
@@ -176,37 +244,37 @@ export function AdvantagesSection() {
   const items = [
     {
       icon: ShieldCheck,
-      title: "Qualité médicale",
-      desc: "Silicone de grade médical, hypoallergénique et certifié pour un contact prolongé avec la peau."
+      title: "Qualite medicale",
+      desc: "Silicone de grade medical hypoallergenique et certifie pour un contact prolonge avec la peau."
     },
     {
       icon: Heart,
       title: "Confort absolu",
-      desc: "Légèreté et douceur pour un port confortable tout au long de la journée."
+      desc: "Legerete et douceur exceptionnelles pour un port confortable tout au long de la journee."
     },
     {
       icon: CheckCircle2,
       title: "Aspect naturel",
-      desc: "Texture et mouvement réalistes pour une apparence discrète sous les vêtements."
+      desc: "Texture et mouvements realistes pour une apparence discrete sous les vetements."
     },
     {
       icon: UserRound,
       title: "Accompagnement",
-      desc: "Conseils personnalisés pour trouver la solution la plus adaptée à votre besoin."
+      desc: "Conseils personnalises pour vous aider a trouver la solution la plus adaptee."
     }
   ];
 
   return (
-    <section id="avantages" className="container py-16 md:py-20">
+    <section id="avantages" className="container py-14 md:py-18">
       <SectionIntro
         eyebrow="Pourquoi nous choisir"
-        title="L'excellence au service de votre bien-être"
-        description="Une pratique experte, humaine et artisanale pour vous accompagner dans la durée."
+        title="L'excellence au service de votre bien-etre"
+        description="Une demarche humaine, technique et artisanale pour vous accompagner avec respect et discretion."
       />
       <div className="mt-10 grid gap-5 md:grid-cols-2">
         {items.map((item) => (
-          <article key={item.title} className="rounded-3xl border border-[#e1d1cb] bg-white p-6 shadow-card">
-            <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-b from-[#8e3043] to-[#642232] text-white">
+          <article key={item.title} className="rounded-3xl border border-[#e1d3cb] bg-white p-6 shadow-card">
+            <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-b from-[#8f3146] to-[#642233] text-white">
               <item.icon size={22} />
             </div>
             <h3 className="font-serif text-3xl text-[#4f2b2f]">{item.title}</h3>
@@ -218,18 +286,40 @@ export function AdvantagesSection() {
   );
 }
 
-export function TestimonialsSection() {
+export function WorkGallerySection() {
   return (
-    <section id="temoignages" className="bg-gradient-to-b from-[#97394c] to-[#6b2435] py-16 md:py-20">
+    <section id="realisations" className="bg-[#f8f2eb] py-14 md:py-18">
       <div className="container">
         <SectionIntro
-          eyebrow="Témoignages"
-          title="Témoignages de nos clientes"
-          description="Découvrez comment SEIN'BIOZE a transformé le quotidien de femmes accompagnées avec respect et précision."
+          eyebrow="Realisations"
+          title="Decouvrez nos creations"
+          description="Une selection de travaux reels pour montrer la precision du modelage, des teintes et des finitions."
+        />
+        <div className="mt-10">
+          <RealisationsGallery limit={6} />
+        </div>
+        <div className="mt-8 text-center">
+          <Link href="/realisations">
+            <Button variant="secondary">Voir toutes les realisations</Button>
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function TestimonialsSection() {
+  return (
+    <section id="temoignages" className="bg-gradient-to-b from-[#a34759] to-[#6b2435] py-14 md:py-18">
+      <div className="container">
+        <SectionIntro
+          eyebrow="Temoignages"
+          title="Temoignages de nos clientes"
+          description="Decouvrez comment SEIN'BIOZE a transforme la vie de nos clientes en 2025."
         />
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {testimonials.map((item) => (
-            <article key={item.id} className="rounded-3xl border border-white/35 bg-white/10 p-6 text-[#f7e9ec] backdrop-blur-sm">
+            <article key={item.id} className="rounded-3xl border border-white/35 bg-white/10 p-6 text-[#f8e9ed] backdrop-blur-sm">
               <p className="text-sm leading-relaxed">"{item.quote}"</p>
               <div className="mt-6 border-t border-white/35 pt-4 text-xs uppercase tracking-[0.12em] text-[#f4dce1]">
                 {item.firstName} · {item.city}
@@ -244,13 +334,16 @@ export function TestimonialsSection() {
 
 export function ContactBlockSection() {
   return (
-    <section id="contact" className="container py-16 md:py-20">
+    <section id="contact" className="container py-14 md:py-18">
       <div className="grid gap-8 rounded-3xl border border-[#decfc7] bg-white p-8 shadow-card lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#8c5f67]">Contact</p>
           <h2 className="mt-3 font-serif text-5xl leading-tight text-[#4f2b2f]">Parlons de vos besoins</h2>
           <p className="mt-4 text-base leading-relaxed text-[#6c4e52]">
-            Notre équipe est à votre écoute pour vous accompagner dans le choix de la solution idéale pour vous.
+            Notre equipe est a votre ecoute pour vous accompagner dans le choix de la solution ideale pour vous.
+          </p>
+          <p className="mt-3 text-sm text-[#6c4e52]">
+            Tel: {siteConfig.phone} · Email: {siteConfig.email}
           </p>
         </div>
         <div className="flex flex-wrap gap-3 lg:justify-end">

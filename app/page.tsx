@@ -6,7 +6,8 @@ import {
   CraftSection,
   PigmentationServicesSection,
   ProductsSection,
-  TestimonialsSection
+  TestimonialsSection,
+  WorkGallerySection
 } from "@/components/sections/home-sections";
 import { createMetadata, defaultSeoKeywords } from "@/lib/site";
 
@@ -23,10 +24,11 @@ export default function HomePage() {
     <>
       <HeroSection />
       <AboutStorySection />
+      <CraftSection />
       <ProductsSection />
       <PigmentationServicesSection />
-      <CraftSection />
       <AdvantagesSection />
+      <WorkGallerySection />
       <TestimonialsSection />
       <ContactBlockSection />
     </>

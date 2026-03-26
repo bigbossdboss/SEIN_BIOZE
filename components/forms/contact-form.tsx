@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useState } from "react";
+import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -14,6 +15,7 @@ export function ContactForm() {
     setIsSubmitting(true);
     setError("");
     setMessage("");
+
     try {
       const payload = {
         firstName: String(formData.get("firstName") || ""),
@@ -23,15 +25,18 @@ export function ContactForm() {
         message: String(formData.get("message") || ""),
         rgpdConsent: formData.get("rgpdConsent") === "on"
       };
+
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       });
+
       const data = (await response.json()) as { ok: boolean; error?: string };
       if (!response.ok || !data.ok) {
         throw new Error(data.error || "Erreur lors de l'envoi.");
       }
+
       setMessage("Votre message a bien ete envoye. Nous revenons vers vous rapidement.");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Une erreur est survenue.");
@@ -41,7 +46,7 @@ export function ContactForm() {
   }
 
   return (
-    <form action={onSubmit} className="space-y-5 rounded-3xl border border-[#decec8] bg-white p-7 shadow-card">
+    <form action={onSubmit} className="space-y-5 rounded-3xl border border-[#decfc7] bg-white p-7 shadow-card md:p-8">
       <div className="grid gap-4 md:grid-cols-2">
         <div>
           <label className="mb-2 block text-sm font-medium text-[#5d353e]">Nom complet</label>
@@ -59,8 +64,8 @@ export function ContactForm() {
           <Input name="phone" placeholder="Votre numero de telephone" required />
         </div>
         <div>
-          <label className="mb-2 block text-sm font-medium text-[#5d353e]">Nom de famille</label>
-          <Input name="lastName" placeholder="Votre prenom/nom" required />
+          <label className="mb-2 block text-sm font-medium text-[#5d353e]">Prenom / Nom</label>
+          <Input name="lastName" placeholder="Votre prenom et nom" required />
         </div>
       </div>
 
@@ -79,6 +84,7 @@ export function ContactForm() {
 
       <Button type="submit" disabled={isSubmitting} className="h-14 w-full text-lg">
         {isSubmitting ? "Envoi..." : "Envoyer votre message"}
+        <Send size={18} className="ml-2" />
       </Button>
     </form>
   );

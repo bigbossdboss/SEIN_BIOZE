@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --color-base: #f6efe8;
-  --color-soft: #f1e7dc;
-  --color-accent: #8a2d3f;
-  --color-strong: #4f2b2f;
-  --color-highlight: #e2b983;
-  --radius-sm: 0.5rem;
-  --radius-md: 0.9rem;
-  --radius-lg: 1.25rem;
-  --radius-xl: 1.75rem;
-  --shadow-soft: 0 12px 40px rgba(135, 82, 30, 0.08);
+  --color-base: #f9f4ef;
+  --color-soft: #f3e8dc;
+  --color-accent: #8b3146;
+  --color-strong: #4e2831;
+  --color-highlight: #e0bd96;
+  --radius-sm: 0.55rem;
+  --radius-md: 0.95rem;
+  --radius-lg: 1.3rem;
+  --radius-xl: 1.8rem;
+  --shadow-soft: 0 12px 40px rgba(95, 48, 58, 0.08);
   --container-narrow: 760px;
-  --container-wide: 1200px;
+  --container-wide: 1180px;
 }
 
 html {
@@ -22,12 +22,12 @@ html {
 }
 
 * {
-  border-color: rgba(138, 45, 63, 0.14);
+  border-color: rgba(139, 49, 70, 0.14);
 }
 
 body {
   margin: 0;
-  background: var(--color-base);
+  background: linear-gradient(180deg, #f9f4ef 0%, #f7f2ed 45%, #f8f3ee 100%);
   color: var(--color-strong);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   text-rendering: optimizeLegibility;
@@ -39,5 +39,5 @@ a {
 }
 
 section {
-  scroll-margin-top: 6rem;
+  scroll-margin-top: 6.5rem;
 }
