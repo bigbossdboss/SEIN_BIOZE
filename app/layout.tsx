@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import { Playfair_Display, Manrope } from "next/font/google";
 import "./globals.css";
+import { BrandRail } from "@/components/layout/brand-rail";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { WhatsAppFloating } from "@/components/layout/whatsapp-floating";
@@ -47,7 +48,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={`${fontSerif.variable} ${fontSans.variable}`}>
-      <body>
+      <body className="xl:pl-52">
+        <BrandRail />
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />

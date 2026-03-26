@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --color-base: #ffffff;
-  --color-soft: #eacda9;
-  --color-accent: #c87928;
-  --color-strong: #87521e;
-  --color-highlight: #e8b45e;
+  --color-base: #f6efe8;
+  --color-soft: #f1e7dc;
+  --color-accent: #8a2d3f;
+  --color-strong: #4f2b2f;
+  --color-highlight: #e2b983;
   --radius-sm: 0.5rem;
   --radius-md: 0.9rem;
   --radius-lg: 1.25rem;
@@ -22,7 +22,7 @@ html {
 }
 
 * {
-  border-color: rgba(135, 82, 30, 0.12);
+  border-color: rgba(138, 45, 63, 0.14);
 }
 
 body {
@@ -36,4 +36,8 @@ body {
 
 a {
   transition: color 160ms ease;
+}
+
+section {
+  scroll-margin-top: 6rem;
 }

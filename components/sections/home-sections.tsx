@@ -1,46 +1,94 @@
-﻿import Link from "next/link";
-import { services } from "@/data/services";
+﻿import { CheckCircle2, Heart, ShieldCheck, Sparkles, UserRound, Wrench } from "lucide-react";
+import Link from "next/link";
 import { testimonials } from "@/data/testimonials";
-import { faqItems } from "@/data/faq";
 import { siteConfig } from "@/lib/site";
 import { Button } from "@/components/ui/button";
-import { SectionHeading } from "@/components/ui/section-heading";
-import { RealisationsGallery } from "@/components/sections/realisations-gallery";
 
-export function TrustSection() {
+function SectionIntro({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
   return (
-    <section className="container py-14">
-      <div className="grid gap-4 rounded-xl border border-brand-100 bg-white p-6 shadow-card md:grid-cols-3">
-        {[
-          "Cabinet discret et accueil sur rendez-vous uniquement",
-          "Protocoles adaptes a votre parcours personnel",
-          "Respect absolu de la confidentialite et de votre rythme"
-        ].map((item) => (
-          <p key={item} className="text-sm text-[#6e5138]">{item}</p>
-        ))}
+    <div className="mx-auto max-w-3xl text-center">
+      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#8c5f67]">{eyebrow}</p>
+      <h2 className="mt-3 font-serif text-4xl leading-tight text-[#4f2b2f] md:text-5xl">{title}</h2>
+      <p className="mt-4 text-base leading-relaxed text-[#6c4e52]">{description}</p>
+    </div>
+  );
+}
+
+export function AboutStorySection() {
+  return (
+    <section id="qui-sommes-nous" className="container py-16 md:py-20">
+      <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+        <div className="rounded-3xl border border-[#e2d3cb] bg-[#f3e9df] p-8">
+          <div className="flex h-full min-h-[230px] items-center justify-center rounded-2xl border border-[#eadcd3] bg-[#f6efe8] text-[#8a5a62]">
+            <UserRound size={74} strokeWidth={1.4} />
+          </div>
+          <div className="mt-6 grid grid-cols-3 gap-3 text-center text-sm">
+            <div className="rounded-2xl bg-white p-3 text-[#6d4d52]"><p className="font-semibold">2025</p><p>Création</p></div>
+            <div className="rounded-2xl bg-white p-3 text-[#6d4d52]"><p className="font-semibold">Guadeloupe</p><p>Ancrage local</p></div>
+            <div className="rounded-2xl bg-white p-3 text-[#6d4d52]"><p className="font-semibold">100%</p><p>Artisanal</p></div>
+          </div>
+        </div>
+
+        <article id="a-propos">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#8c5f67]">Notre histoire</p>
+          <h2 className="mt-3 font-serif text-5xl leading-tight text-[#4f2b2f]">Qui sommes nous</h2>
+          <div className="mt-6 space-y-4 text-base leading-relaxed text-[#6b4b4f]">
+            <p>
+              Je suis une professionnelle guadeloupéenne issue du soin, reconvertie dans la dermopigmentation réparatrice et la création de prothèses mammaires externes.
+            </p>
+            <p>
+              Cette reconversion unit mes deux piliers: l'aide à la personne et l'esthétique réparatrice. Chaque accompagnement est conçu avec écoute, pudeur et exigence.
+            </p>
+            <p>
+              Chez SEIN'BIOZE, chaque création est personnalisée pour que vous retrouviez confiance, confort et harmonie dans votre corps.
+            </p>
+          </div>
+        </article>
       </div>
     </section>
   );
 }
 
-export function ServicesOverviewSection() {
+export function ProductsSection() {
+  const cards = [
+    {
+      title: "Forme Naturelle",
+      badge: "Populaire",
+      desc: "Prothèse symétrique offrant un galbe harmonieux et un décolleté naturel, pensée pour le quotidien.",
+      details: "Tailles A à F · Légère · Aspect réaliste"
+    },
+    {
+      title: "Forme Anatomique",
+      badge: "Précision",
+      desc: "Design asymétrique reproduisant fidèlement la forme naturelle du sein pour une adaptation fine.",
+      details: "Tailles A à C · Ultra légère · Confort longue durée"
+    },
+    {
+      title: "Forme Ronde",
+      badge: "Nouveau",
+      desc: "Prothèse ronde avec effet volume pour occasions spéciales et besoins de projection plus marqués.",
+      details: "Tailles B à E · Effet volume · Finition douce"
+    }
+  ];
+
   return (
-    <section className="bg-brand-50/60 py-16">
+    <section id="nos-produits" className="bg-[#f8f2ec] py-16 md:py-20">
       <div className="container">
-        <SectionHeading
-          eyebrow="Prestations"
-          title="Des services experts pour chaque etape de votre reconstruction esthetique"
-          description="Une approche sur mesure, avec des decisions prises ensemble, sans pression."
+        <SectionIntro
+          eyebrow="Nos solutions"
+          title="Prothèses mammaires en silicone"
+          description="Une gamme complète pour répondre à vos besoins avec différentes formes et tailles, pour une adaptation parfaite à votre morphologie."
         />
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {services.map((service) => (
-            <article key={service.slug} className="rounded-xl border border-brand-100 bg-white p-6 shadow-card">
-              <h3 className="font-serif text-2xl text-brand-700">{service.name}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#6e5138]">{service.shortDescription}</p>
-              <p className="mt-4 text-sm font-medium text-brand-700">Evaluation personnalisee apres premier echange.</p>
-              <Link className="mt-5 inline-block text-sm font-semibold text-brand-500 underline underline-offset-4" href={`/services/${service.slug}`}>
-                Voir le detail
-              </Link>
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          {cards.map((card) => (
+            <article key={card.title} className="rounded-3xl border border-[#e1d1cb] bg-white p-6 shadow-card">
+              <div className="mb-5 flex h-44 items-center justify-center rounded-2xl border border-[#ece0d7] bg-[#f3e9df]">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#d4b8aa] bg-[#ead8ca]" />
+              </div>
+              <span className="rounded-full bg-[#7d2438] px-3 py-1 text-xs font-semibold text-white">{card.badge}</span>
+              <h3 className="mt-4 font-serif text-3xl text-[#4f2b2f]">{card.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#6a4c50]">{card.desc}</p>
+              <p className="mt-4 text-sm font-medium text-[#83545d]">{card.details}</p>
             </article>
           ))}
         </div>
@@ -49,40 +97,120 @@ export function ServicesOverviewSection() {
   );
 }
 
-export function ProcessSection() {
+export function PigmentationServicesSection() {
+  return (
+    <section className="container py-16 md:py-20">
+      <SectionIntro
+        eyebrow="Services de pigmentation"
+        title="Pigmentation réparatrice et tatouage 3D"
+        description="Complétez votre reconstruction avec des techniques de dermopigmentation précises, artistiques et harmonieuses."
+      />
+      <div className="mt-10 grid gap-6 lg:grid-cols-2">
+        <article className="rounded-3xl border border-[#e1d1cb] bg-white p-6 shadow-card">
+          <div className="mb-5 flex h-52 items-center justify-center rounded-2xl border border-[#ece0d7] bg-[#f3e9df]">
+            <Wrench size={72} strokeWidth={1.2} className="text-[#8c5f67]" />
+          </div>
+          <h3 className="font-serif text-3xl text-[#4f2b2f]">Pigmentation Réparatrice</h3>
+          <p className="mt-3 text-sm leading-relaxed text-[#6a4c50]">
+            Camouflage artistique de cicatrices et irrégularités cutanées. Technique fine et naturelle pour rétablir l'uniformité de la peau.
+          </p>
+          <ul className="mt-4 space-y-1 text-sm text-[#6a4c50]">
+            <li>✓ Camouflage de cicatrices</li>
+            <li>✓ Uniformité cutanée</li>
+            <li>✓ Pigments adaptés à votre teinte</li>
+          </ul>
+        </article>
+
+        <article className="rounded-3xl border border-[#e1d1cb] bg-white p-6 shadow-card">
+          <div className="mb-5 flex h-52 items-center justify-center rounded-2xl border border-[#ece0d7] bg-[#f3e9df]">
+            <Sparkles size={72} strokeWidth={1.2} className="text-[#8c5f67]" />
+          </div>
+          <h3 className="font-serif text-3xl text-[#4f2b2f]">Tatouage 3D Aréolo-Mammaire</h3>
+          <p className="mt-3 text-sm leading-relaxed text-[#6a4c50]">
+            Création de l'illusion 3D de la plaque aréolo-mammaire par tatouage artistique, entièrement personnalisée pour une reconstruction cohérente.
+          </p>
+          <ul className="mt-4 space-y-1 text-sm text-[#6a4c50]">
+            <li>✓ Effet 3D ultra réaliste</li>
+            <li>✓ Entièrement personnalisé</li>
+            <li>✓ Reconstruction complète</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  );
+}
+
+export function CraftSection() {
   const steps = [
+    { number: "1", title: "Empreinte", desc: "Prise minutieuse de l'empreinte de votre mamelon" },
+    { number: "2", title: "Analyse", desc: "Étude détaillée pour une adaptation parfaite" },
+    { number: "3", title: "Création", desc: "Modelage artisanal en silicone médical" },
+    { number: "4", title: "Finition", desc: "Finitions précises et test de qualité" }
+  ];
+
+  return (
+    <section id="savoir-faire" className="bg-[#f8f2ec] py-16 md:py-20">
+      <div className="container">
+        <SectionIntro
+          eyebrow="Savoir-faire"
+          title="Sur mesure, entièrement réalisée à la main"
+          description="Chaque prothèse est unique, créée à partir de l'empreinte précise de votre mamelon, du premier geste à la finition."
+        />
+        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {steps.map((step) => (
+            <article key={step.number} className="rounded-3xl border border-[#e1d1cb] bg-white p-6 shadow-card">
+              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-[#8a2d3f] text-lg font-semibold text-white">
+                {step.number}
+              </div>
+              <h3 className="font-serif text-3xl text-[#4f2b2f]">{step.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#6a4c50]">{step.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function AdvantagesSection() {
+  const items = [
     {
-      title: "Empreinte",
-      description: "Nous identifions votre besoin principal, vos attentes et vos priorites de confort."
+      icon: ShieldCheck,
+      title: "Qualité médicale",
+      desc: "Silicone de grade médical, hypoallergénique et certifié pour un contact prolongé avec la peau."
     },
     {
-      title: "Analyse",
-      description: "Nous etablissons une strategie esthetique personnalisee et adaptee a votre peau."
+      icon: Heart,
+      title: "Confort absolu",
+      desc: "Légèreté et douceur pour un port confortable tout au long de la journée."
     },
     {
-      title: "Creation",
-      description: "La realisation est faite avec precision, douceur et sens du detail."
+      icon: CheckCircle2,
+      title: "Aspect naturel",
+      desc: "Texture et mouvement réalistes pour une apparence discrète sous les vêtements."
     },
     {
-      title: "Finition",
-      description: "Nous effectuons les ajustements fins et planifions un suivi durable."
+      icon: UserRound,
+      title: "Accompagnement",
+      desc: "Conseils personnalisés pour trouver la solution la plus adaptée à votre besoin."
     }
   ];
 
   return (
-    <section className="container py-16">
-      <SectionHeading
-        eyebrow="Parcours"
-        title="Un accompagnement clair, progressif et respectueux"
-        description="Chaque etape est expliquee avant de commencer, pour avancer avec confiance."
-        centered
+    <section id="avantages" className="container py-16 md:py-20">
+      <SectionIntro
+        eyebrow="Pourquoi nous choisir"
+        title="L'excellence au service de votre bien-être"
+        description="Une pratique experte, humaine et artisanale pour vous accompagner dans la durée."
       />
       <div className="mt-10 grid gap-5 md:grid-cols-2">
-        {steps.map((step, index) => (
-          <article key={step.title} className="rounded-xl border border-brand-100 bg-white p-6 shadow-card">
-            <p className="text-sm font-semibold text-brand-500">Etape {index + 1}</p>
-            <h3 className="mt-2 font-serif text-2xl text-brand-700">{step.title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-[#6e5138]">{step.description}</p>
+        {items.map((item) => (
+          <article key={item.title} className="rounded-3xl border border-[#e1d1cb] bg-white p-6 shadow-card">
+            <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-b from-[#8e3043] to-[#642232] text-white">
+              <item.icon size={22} />
+            </div>
+            <h3 className="font-serif text-3xl text-[#4f2b2f]">{item.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-[#6a4c50]">{item.desc}</p>
           </article>
         ))}
       </div>
@@ -90,78 +218,25 @@ export function ProcessSection() {
   );
 }
 
-export function RealisationsPreviewSection() {
-  return (
-    <section className="bg-brand-50/60 py-16">
-      <div className="container">
-        <SectionHeading
-          eyebrow="Realisations"
-          title="Un apercu concret du niveau de finition"
-          description="Des exemples de textures, de nuances et de reliefs adaptes a chaque personne."
-        />
-        <div className="mt-8">
-          <RealisationsGallery limit={6} />
-        </div>
-        <Link href="/realisations" className="mt-6 inline-block text-sm font-semibold text-brand-500 underline underline-offset-4">
-          Voir toute la galerie
-        </Link>
-      </div>
-    </section>
-  );
-}
-
-export function ConfidentialitySection() {
-  return (
-    <section className="bg-brand-700 py-14 text-white">
-      <div className="container grid gap-8 md:grid-cols-2 md:items-center">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-300">Confidentialite & soins</p>
-          <h2 className="mt-4 font-serif text-3xl">Votre intimite est au coeur de notre pratique.</h2>
-        </div>
-        <ul className="space-y-3 text-sm text-[#f6e7d5]">
-          <li>Consultations individuelles dans un cadre discret.</li>
-          <li>Dossier client securise et traitement RGPD.</li>
-          <li>Recommandations ecrites de suivi et d'entretien personnalisees.</li>
-        </ul>
-      </div>
-    </section>
-  );
-}
-
 export function TestimonialsSection() {
   return (
-    <section className="container py-16">
-      <SectionHeading eyebrow="Temoignages" title="Elles parlent d'un accompagnement rassurant et profondement humain" />
-      <div className="mt-8 grid gap-5 md:grid-cols-3">
-        {testimonials.map((item) => (
-          <blockquote key={item.id} className="rounded-xl border border-brand-100 bg-white p-5 shadow-card">
-            <p className="text-sm leading-relaxed text-[#6e5138]">"{item.quote}"</p>
-            <footer className="mt-4 text-xs font-semibold uppercase tracking-[0.1em] text-brand-500">
-              {item.firstName}, {item.city} - {item.service}
-            </footer>
-          </blockquote>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-export function FaqPreviewSection() {
-  return (
-    <section className="bg-brand-50/60 py-16">
+    <section id="temoignages" className="bg-gradient-to-b from-[#97394c] to-[#6b2435] py-16 md:py-20">
       <div className="container">
-        <SectionHeading eyebrow="FAQ" title="Questions frequentes" />
-        <div className="mt-8 space-y-3">
-          {faqItems.slice(0, 4).map((item) => (
-            <article key={item.question} className="rounded-lg border border-brand-100 bg-white p-5">
-              <h3 className="font-semibold text-brand-700">{item.question}</h3>
-              <p className="mt-2 text-sm text-[#6e5138]">{item.answer}</p>
+        <SectionIntro
+          eyebrow="Témoignages"
+          title="Témoignages de nos clientes"
+          description="Découvrez comment SEIN'BIOZE a transformé le quotidien de femmes accompagnées avec respect et précision."
+        />
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          {testimonials.map((item) => (
+            <article key={item.id} className="rounded-3xl border border-white/35 bg-white/10 p-6 text-[#f7e9ec] backdrop-blur-sm">
+              <p className="text-sm leading-relaxed">"{item.quote}"</p>
+              <div className="mt-6 border-t border-white/35 pt-4 text-xs uppercase tracking-[0.12em] text-[#f4dce1]">
+                {item.firstName} · {item.city}
+              </div>
             </article>
           ))}
         </div>
-        <Link href="/faq" className="mt-6 inline-block text-sm font-semibold text-brand-500 underline underline-offset-4">
-          Voir la FAQ complete
-        </Link>
       </div>
     </section>
   );
@@ -169,22 +244,21 @@ export function FaqPreviewSection() {
 
 export function ContactBlockSection() {
   return (
-    <section className="container py-16">
-      <div className="rounded-xl border border-brand-100 bg-white p-8 shadow-card">
-        <SectionHeading
-          eyebrow="Contact"
-          title="Parlons de votre besoin en toute discretion"
-          description="Un premier echange suffit pour vous orienter vers la solution la plus juste."
-        />
-        <div className="mt-6 flex flex-wrap gap-3">
+    <section id="contact" className="container py-16 md:py-20">
+      <div className="grid gap-8 rounded-3xl border border-[#decfc7] bg-white p-8 shadow-card lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#8c5f67]">Contact</p>
+          <h2 className="mt-3 font-serif text-5xl leading-tight text-[#4f2b2f]">Parlons de vos besoins</h2>
+          <p className="mt-4 text-base leading-relaxed text-[#6c4e52]">
+            Notre équipe est à votre écoute pour vous accompagner dans le choix de la solution idéale pour vous.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-3 lg:justify-end">
           <a href={`https://wa.me/${siteConfig.whatsapp}`} target="_blank" rel="noreferrer">
-            <Button>Ecrire sur WhatsApp</Button>
+            <Button>WhatsApp</Button>
           </a>
           <Link href="/contact">
-            <Button variant="secondary">Formulaire de contact</Button>
-          </Link>
-          <Link href="/services">
-            <Button variant="ghost">Voir les services</Button>
+            <Button variant="secondary">Formulaire complet</Button>
           </Link>
         </div>
       </div>

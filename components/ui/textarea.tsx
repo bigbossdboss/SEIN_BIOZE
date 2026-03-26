@@ -7,11 +7,10 @@ export function Textarea({ className, ...props }: TextareaProps) {
   return (
     <textarea
       className={cn(
-        "min-h-28 w-full rounded-md border border-brand-100 bg-white px-3 py-2 text-sm text-brand-700 placeholder:text-[#a07d5d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500",
+        "min-h-28 w-full rounded-xl border border-[#d5c4bf] bg-white px-3 py-2 text-sm text-[#5a343d] placeholder:text-[#b29b96] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8a2d3f]",
         className
       )}
       {...props}
     />
   );
 }
-

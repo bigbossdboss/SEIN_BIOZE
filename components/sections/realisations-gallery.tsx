@@ -22,16 +22,16 @@ export function RealisationsGallery({ limit }: RealisationsGalleryProps) {
   return (
     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((item) => (
-        <article key={item.id} className="overflow-hidden rounded-xl border border-brand-100 bg-white shadow-card">
+        <article key={item.id} className="overflow-hidden rounded-3xl border border-[#decfc7] bg-white shadow-card">
           {item.available ? (
-            <Image src={item.src} alt={item.alt} width={1100} height={1400} className="h-64 w-full object-cover" />
+            <Image src={item.src} alt={item.alt} width={1100} height={1400} className="h-72 w-full object-cover" />
           ) : (
-            <div className="flex h-64 w-full items-center justify-center bg-brand-50 p-6 text-center text-sm text-[#7f6146]">
+            <div className="flex h-72 w-full items-center justify-center bg-[#f3e9df] p-6 text-center text-sm text-[#7f6146]">
               Photo en cours d'ajout
             </div>
           )}
-          <div className="p-4">
-            <p className="text-sm leading-relaxed text-[#6e5138]">{item.caption}</p>
+          <div className="p-5">
+            <p className="text-sm leading-relaxed text-[#6a4c50]">{item.caption}</p>
           </div>
         </article>
       ))}

@@ -10,9 +10,9 @@
       "Oui. Chaque echange et chaque dossier sont traites avec confidentialite stricte. L'accueil est discret et les donnees sont protegees."
   },
   {
-    question: "Comment connaitre le tarif ?",
+    question: "Comment se passe l'accompagnement ?",
     answer:
-      "Le tarif est communique apres un premier echange afin de vous proposer une solution adaptee a votre besoin reel."
+      "Vous etes guidee et informee a chaque etape, depuis l'evaluation initiale jusqu'au suivi, avec une approche douce et sur mesure."
   },
   {
     question: "Puis-je etre accompagnee lors du rendez-vous ?",

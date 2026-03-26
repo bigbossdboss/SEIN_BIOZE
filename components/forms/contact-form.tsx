@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -41,41 +41,45 @@ export function ContactForm() {
   }
 
   return (
-    <form action={onSubmit} className="space-y-4 rounded-xl border border-brand-100 bg-white p-6 shadow-card">
+    <form action={onSubmit} className="space-y-5 rounded-3xl border border-[#decec8] bg-white p-7 shadow-card">
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="mb-2 block text-sm font-medium text-brand-700">Prenom</label>
-          <Input name="firstName" required />
+          <label className="mb-2 block text-sm font-medium text-[#5d353e]">Nom complet</label>
+          <Input name="firstName" placeholder="Votre nom" required />
         </div>
         <div>
-          <label className="mb-2 block text-sm font-medium text-brand-700">Nom</label>
-          <Input name="lastName" required />
+          <label className="mb-2 block text-sm font-medium text-[#5d353e]">Email</label>
+          <Input name="email" type="email" placeholder="votre@email.com" required />
         </div>
       </div>
+
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="mb-2 block text-sm font-medium text-brand-700">Email</label>
-          <Input name="email" type="email" required />
+          <label className="mb-2 block text-sm font-medium text-[#5d353e]">Telephone</label>
+          <Input name="phone" placeholder="Votre numero de telephone" required />
         </div>
         <div>
-          <label className="mb-2 block text-sm font-medium text-brand-700">Telephone</label>
-          <Input name="phone" required />
+          <label className="mb-2 block text-sm font-medium text-[#5d353e]">Nom de famille</label>
+          <Input name="lastName" placeholder="Votre prenom/nom" required />
         </div>
       </div>
+
       <div>
-        <label className="mb-2 block text-sm font-medium text-brand-700">Votre message</label>
-        <Textarea name="message" required />
+        <label className="mb-2 block text-sm font-medium text-[#5d353e]">Message</label>
+        <Textarea name="message" placeholder="Comment pouvons-nous vous aider ?" required />
       </div>
-      <label className="flex items-start gap-2 text-sm text-[#6e5138]">
-        <input name="rgpdConsent" type="checkbox" required className="mt-1 h-4 w-4 rounded border-brand-300" />
+
+      <label className="flex items-start gap-2 text-sm text-[#6e5256]">
+        <input name="rgpdConsent" type="checkbox" required className="mt-1 h-4 w-4 rounded border-[#d1b9b5]" />
         J'accepte que mes donnees soient utilisees pour repondre a ma demande.
       </label>
+
       {message ? <p className="text-sm font-medium text-green-700">{message}</p> : null}
       {error ? <p className="text-sm font-medium text-red-700">{error}</p> : null}
-      <Button type="submit" disabled={isSubmitting}>
-        {isSubmitting ? "Envoi..." : "Envoyer mon message"}
+
+      <Button type="submit" disabled={isSubmitting} className="h-14 w-full text-lg">
+        {isSubmitting ? "Envoi..." : "Envoyer votre message"}
       </Button>
     </form>
   );
 }
-

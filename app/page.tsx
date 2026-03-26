@@ -1,13 +1,12 @@
 ﻿import { HeroSection } from "@/components/sections/hero-section";
 import {
-  ConfidentialitySection,
+  AboutStorySection,
+  AdvantagesSection,
   ContactBlockSection,
-  FaqPreviewSection,
-  ProcessSection,
-  RealisationsPreviewSection,
-  ServicesOverviewSection,
-  TestimonialsSection,
-  TrustSection
+  CraftSection,
+  PigmentationServicesSection,
+  ProductsSection,
+  TestimonialsSection
 } from "@/components/sections/home-sections";
 import { createMetadata, defaultSeoKeywords } from "@/lib/site";
 
@@ -23,13 +22,12 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <TrustSection />
-      <ServicesOverviewSection />
-      <ProcessSection />
-      <RealisationsPreviewSection />
-      <ConfidentialitySection />
+      <AboutStorySection />
+      <ProductsSection />
+      <PigmentationServicesSection />
+      <CraftSection />
+      <AdvantagesSection />
       <TestimonialsSection />
-      <FaqPreviewSection />
       <ContactBlockSection />
     </>
   );
